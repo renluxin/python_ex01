@@ -63,18 +63,15 @@ class Weather_Reptile:
         x = range(len(names))
         yMax = [self.data[i][1] for i in range(1,6)]
         yMin = [self.data[i][2] for i in range(1,6)]
-        # plt.plot(x, y, 'ro-')
-        # plt.plot(x, y1, 'bo-')
-        # pl.xlim(-1, 11)  # 限定横轴的范围
-        # pl.ylim(-1, 110)  # 限定纵轴的范围
-        plt.plot(x, yMax, marker='o', mec='r', mfc='w', label=u'最低温')
-        plt.plot(x, yMin, marker='*', ms=10, label=u'最高温')
+        plt.plot(x, yMax, marker='o', mec='r', mfc='w', label=u'最高温')
+        plt.plot(x, yMin, marker='*', ms=10, label=u'最低温')
+        plt.ylim(min(yMin)*0.75, max(yMax)*1.25)
         plt.legend()  # 让图例生效
         plt.xticks(x, names, rotation=45)
         plt.margins(0)
-        plt.subplots_adjust(bottom=0.15)
-        plt.xlabel(u"time(s)邻居")  # X轴标签
-        plt.ylabel("RMSE")  # Y轴标签
-        plt.title("A simple plot")  # 标题
+        plt.subplots_adjust(bottom=0.25)
+        plt.xlabel(u"日期")  # X轴标签
+        plt.ylabel("温度（℃）")  # Y轴标签
+        plt.title("合肥市气温走势")  # 标题
 
         plt.show()
