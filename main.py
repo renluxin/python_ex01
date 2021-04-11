@@ -44,7 +44,7 @@ if __name__ == "__main__":
     #定义窗口
     mainWindow=tk.Tk()
     mainWindow.title("第一次python作业")
-    mainWindow.geometry("330x120+100+100")
+    mainWindow.geometry("400x150+100+100")
     #定义按钮
     b1=tk.Button(mainWindow,text="周公解梦",command=dream,width=10,font="微软雅黑 12")
     b1.grid(row = 2,column = 2)

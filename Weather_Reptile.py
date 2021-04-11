@@ -28,7 +28,7 @@ class Weather_Reptile:
 
     def getData(self):
 
-
+        #正则表达式，用于后续解析
         findDate = re.compile(r'<h1>(.*?)</h1>')
         findHtemperature = re.compile(r'<span>(.*?)</span>')
         findLtemperature = re.compile(r'<i>(.*?)℃</i>')
@@ -39,18 +39,20 @@ class Weather_Reptile:
             self.data = [[], [], [], [], [], [], []]  # 分别用来保存一天的天气情况
             item = str(item)  # 将列表item转换为字符串
 
+            #将提取的内容利用正则表达式进一步提取
             Dates = re.findall(findDate, item)
             Htemperatures = re.findall(findHtemperature, item)
             Ltemperatures = re.findall(findLtemperature, item)
             Htemperatures.insert(0, Ltemperatures[0])
             Weathers = re.findall(findWeather, item)
 
+            #将最终数据存入data
             i = 0
             for Date in Dates:
-                self.data[i].append(Dates[i])
-                self.data[i].append(int(Htemperatures[i]))
-                self.data[i].append(int(Ltemperatures[i]))
-                self.data[i].append(Weathers[i])
+                self.data[i].append(Dates[i])   #日期
+                self.data[i].append(int(Htemperatures[i]))      #高温
+                self.data[i].append(int(Ltemperatures[i]))      #低温
+                self.data[i].append(Weathers[i])        #天气类型（后面没有用到）
                 i = i + 1
         return self.data
 
@@ -59,13 +61,16 @@ class Weather_Reptile:
         self.getData()
         mpl.rcParams['font.sans-serif'] = ['SimHei']
 
-        names = [self.data[i][0] for i in range(1,6)]
+        names = [self.data[i][0] for i in range(1,6)]#x轴
         x = range(len(names))
-        yMax = [self.data[i][1] for i in range(1,6)]
+
+        yMax = [self.data[i][1] for i in range(1,6)]#y轴
         yMin = [self.data[i][2] for i in range(1,6)]
-        plt.plot(x, yMax, marker='o', mec='r', mfc='w', label=u'最高温')
+
+        plt.plot(x, yMax, marker='o', mec='r', mfc='w', label=u'最高温')#绘图
         plt.plot(x, yMin, marker='*', ms=10, label=u'最低温')
-        plt.ylim(min(yMin)*0.75, max(yMax)*1.25)
+
+        plt.ylim(min(yMin)*0.75, max(yMax)*1.25)    #选择合适的y轴范围
         plt.legend()  # 让图例生效
         plt.xticks(x, names, rotation=45)
         plt.margins(0)
