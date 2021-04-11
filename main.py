@@ -13,6 +13,7 @@ import Dreaming
 import Weather
 import Idiom
 import Constellation
+import Weather_Reptile
 
 '''
 dream = Dreaming.Dreaming()
@@ -35,6 +36,10 @@ def constellation():#调用星座运势模块
     constellation = Constellation.Constellation()
     constellation.conGUI()
 
+def weather_reptile():
+    weather_reptile = Weather_Reptile.Weather_Reptile("http://www.weather.com.cn/weather/101220101.shtml")
+    weather_reptile.draw()
+
 if __name__ == "__main__":
     #定义窗口
     mainWindow=tk.Tk()
@@ -49,6 +54,9 @@ if __name__ == "__main__":
     b3.grid(row = 3,column = 2)
     b4=tk.Button(mainWindow,text="星座运势",command=constellation,width=10,font="微软雅黑 12")
     b4.grid(row = 3,column = 4)
+    b4 = tk.Button(mainWindow, text="气温走势(爬虫获取)", command=weather_reptile, width=15, font="微软雅黑 12")
+    b4.grid(row=4, column=3)
+
     b5=tk.Button(mainWindow,text="退出",command=mainWindow.quit,width=10,font="微软雅黑 12")
     b5.grid(row=5,column=3)
     #展示
