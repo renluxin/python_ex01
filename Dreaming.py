@@ -1,9 +1,4 @@
 import tkinter as tk
-import  re
-import urllib
-import urllib.request as request
-import urllib.error as error
-import json
 
 import GetAPI
 class Dreaming:

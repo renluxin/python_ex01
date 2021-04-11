@@ -6,7 +6,8 @@ import urllib.request as request
 import urllib.error as error
 import json
 
-#GetAPI类：将传入的参数处理为能够调用接口的标准参数格式，并申请调用接口，返回相应信息或异常。
+#GetAPI类：调接口的类
+# 将传入的参数处理为能够调用接口的标准参数格式，并申请调用接口，返回相应信息或异常。
 class GetAPI:
     def __init__(self,url,key,*otherPara):#初始化，将传入参数赋给类的对象
         self.url = url      #API地址

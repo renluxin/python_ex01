@@ -1,10 +1,6 @@
 import tkinter as tk
-import  re
-import urllib
-import urllib.request as request
-import urllib.error as error
-import json
 
+#成语大全类：代码解释参考周公解梦类
 import GetAPI
 class Idiom:
 
